@@ -4,5 +4,5 @@ app = Celery()
 app.config_from_object("celery_settings")
 
 @app.task
-def task():
+def hello():
 	print 'hello'
