@@ -1,8 +1,17 @@
 from celery import Celery
+from tweepy import Stream
+from tweepy import OAuthHandler
+from tweepy.streaming import StreamListener
+from pymongo import MongoClient
+import time
+import json
+
+import app
+import tweetlistener
 
 app = Celery()
-app.config_from_object("celery_settings")
 
 @app.task
 def hello():
-	print 'hello'
+	twitterStream = Stream(auth, listener())
+	twitterStream.filter(track=["#braves"])
