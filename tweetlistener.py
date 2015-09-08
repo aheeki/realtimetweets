@@ -1,4 +1,3 @@
-import app
 import tasks
 
 class listener(StreamListener):

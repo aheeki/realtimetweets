@@ -6,7 +6,6 @@ from pymongo import MongoClient
 import time
 import json
 
-import app
 import tweetlistener
 
 app = Celery()
