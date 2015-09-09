@@ -2,9 +2,9 @@ from celery import Celery
 
 import tweetlistener
 
-app = Celery()
+celery = Celery()
 
-@app.task
+@celery.task
 def hello():
 	twitterStream = Stream(auth, listener())
 	twitterStream.filter(track=["#braves"])
