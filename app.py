@@ -1,10 +1,9 @@
 from flask import Flask, render_template, jsonify
+from tasks import hello
+
 
 app = Flask(__name__)
 
-app.config.from_object('config.DevelopmentConfig')
-
-from tasks import hello
 
 @app.route('/')
 def index():

@@ -1,10 +1,14 @@
 from celery import Celery
+# from tweepy import Stream
+# import tweetlistener
 
-import tweetlistener
+app = Celery()
 
-celery = Celery()
+app.config_from_object('config')
 
-@celery.task
+
+@app.task
 def hello():
-	twitterStream = Stream(auth, listener())
-	twitterStream.filter(track=["#braves"])
+	print('hello')
+	# twitterStream = Stream(auth, listener())
+	# twitterStream.filter(track=["#braves"])
