@@ -21,21 +21,20 @@ auth.set_access_token(atoken, asecret)
 
 class listener(StreamListener):
 
- def on_data(self, data):
+	def on_data(self, data):
+		# client = MongoClient('localhost', 27017)
+		client = MongoClient(MONGOLAB_URI)
+		db = client.get_default_database()
+		# db = client['twitter_db']
+		collection = db['twitter_collection']
+		tweet = json.loads(data)
 
-     # client = MongoClient('localhost', 27017)
-   	 client = MongoClient(MONGOLAB_URI)
-   	 db = client.get_default_database()
-     # db = client['twitter_db']
-     collection = db['twitter_collection']
-     tweet = json.loads(data)
+		collection.insert(tweet)
 
-     collection.insert(tweet)
+		return True
 
-     return True
-
- def on_error(self, status):
-     print status
+	def on_error(self, status):
+		print status
 
 
 
