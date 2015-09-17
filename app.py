@@ -8,6 +8,7 @@ import json
 import os
 import pika
 import urlparse
+from celery import Celery
 
 app = Flask(__name__)
 
