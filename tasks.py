@@ -12,6 +12,8 @@ import json
 import os
 BROKER_URL = os.environ.get('CLOUDAMQP_URL')
 
+MONGOLAB_URI = os.environ.get('MONGOLAB_URI')
+
 
 app = Celery('tasks', broker=BROKER_URL)
 
