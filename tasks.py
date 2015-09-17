@@ -51,4 +51,4 @@ class listener(StreamListener):
 def hello():
 	# print('hello')
 	twitterStream = Stream(auth, listener())
-	twitterStream.filter(track=["#braves"])
+	twitterStream.filter(track=["#trump"])
