@@ -3,10 +3,11 @@ from celery import Celery
 # import tweetlistener
 
 import os
+BROKER_URL = os.environ.get('CLOUDAMQP_URL')
+
 
 app = Celery('tasks', broker=BROKER_URL)
 
-BROKER_URL = os.environ.get('CLOUDAMQP_URL')
 
 
 # app.config_from_object('config')
