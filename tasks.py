@@ -2,7 +2,7 @@ from celery import Celery
 # from tweepy import Stream
 # import tweetlistener
 
-app = Celery()
+app = Celery('tasks', broker=BROKER_URL)
 
 # app.config_from_object('config')
 

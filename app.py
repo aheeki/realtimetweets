@@ -16,6 +16,7 @@ from tasks import hello
 
 CELERY_TASK_SERIALIZER = 'json'
 BROKER_URL = os.environ.get('CLOUDAMQP_URL')
+BROKER_POOL_LIMIT = 1
 
 
 
