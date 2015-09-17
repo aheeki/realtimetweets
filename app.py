@@ -1,13 +1,8 @@
 from flask import Flask, render_template, jsonify
-from tweepy import Stream
-from tweepy import OAuthHandler
-from tweepy.streaming import StreamListener
 from pymongo import MongoClient
 import time
 import json
 import os
-import pika
-import urlparse
 from celery import Celery
 
 app = Flask(__name__)
@@ -16,7 +11,7 @@ from tasks import hello
 
 CELERY_TASK_SERIALIZER = 'json'
 BROKER_URL = os.environ.get('CLOUDAMQP_URL')
-BROKER_POOL_LIMIT = 1
+
 
 
 
