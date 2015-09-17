@@ -1,7 +1,4 @@
 from celery import Celery
-# from tweepy import Stream
-# import tweetlistener
-
 from tweepy import Stream
 from tweepy import OAuthHandler
 from tweepy.streaming import StreamListener
@@ -10,10 +7,10 @@ import time
 import json
 
 import os
+
 BROKER_URL = os.environ.get('CLOUDAMQP_URL')
-
+CELERY_TASK_SERIALIZER = 'json'
 MONGOLAB_URI = os.environ.get('MONGOLAB_URI')
-
 
 app = Celery('tasks', broker=BROKER_URL)
 
