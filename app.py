@@ -6,8 +6,17 @@ from pymongo import MongoClient
 import time
 import json
 import os
+import pika
+import urlparse
 
 app = Flask(__name__)
+
+from tasks import hello
+
+CELERY_TASK_SERIALIZER = 'json'
+BROKER_URL = os.environ.get('CLOUDAMQP_URL')
+
+
 
 MONGOLAB_URI = os.environ.get('MONGOLAB_URI')
 
@@ -40,8 +49,9 @@ class listener(StreamListener):
 
 @app.route('/')
 def index():
-	twitterStream = Stream(auth, listener())
-	twitterStream.filter(track=["#braves"])
+	# twitterStream = Stream(auth, listener())
+	# twitterStream.filter(track=["#braves"])
+	hello.delay()
 	return render_template('index.html')
 
 if __name__ == '__main__':

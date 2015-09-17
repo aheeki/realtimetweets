@@ -4,11 +4,11 @@ from celery import Celery
 
 app = Celery()
 
-app.config_from_object('config')
+# app.config_from_object('config')
 
 
 @app.task
 def hello():
-	print('hello')
-	# twitterStream = Stream(auth, listener())
-	# twitterStream.filter(track=["#braves"])
+	# print('hello')
+	twitterStream = Stream(auth, listener())
+	twitterStream.filter(track=["#braves"])
