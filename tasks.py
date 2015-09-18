@@ -43,4 +43,4 @@ class listener(StreamListener):
 def hello(hashtag):
 	# print('hello')
 	twitterStream = Stream(auth, listener())
-	twitterStream.filter(track=['hashtag'])
+	twitterStream.filter(track=[hashtag])
