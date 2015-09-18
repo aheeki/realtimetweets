@@ -4,6 +4,7 @@ from tweepy import OAuthHandler
 from tweepy.streaming import StreamListener
 from pymongo import MongoClient
 import json, os
+import app
 
 celeryapp = Celery('tasks', broker=app.config['BROKER_URL'])
 
