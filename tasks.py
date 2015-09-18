@@ -4,12 +4,12 @@ from tweepy import OAuthHandler
 from tweepy.streaming import StreamListener
 from pymongo import MongoClient
 import json, os
-import app
+from flask import current_app
 
-celeryapp = Celery('tasks', broker=app.config['BROKER_URL'])
+celeryapp = Celery('tasks', broker=current_app.config['BROKER_URL'])
 
-auth = OAuthHandler(app.config['CLIENT_KEY'], app.config['CLIENT_SECRET'])
-auth.set_access_token(app.config['ACCESS_TOKEN'], app.config['ACCESS_SECRET'])
+auth = OAuthHandler(current_app.config['CLIENT_KEY'], current_app.config['CLIENT_SECRET'])
+auth.set_access_token(current_app.config['ACCESS_TOKEN'], current_app.config['ACCESS_SECRET'])
 
 
 class listener(StreamListener):
