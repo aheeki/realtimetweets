@@ -11,7 +11,7 @@ def index():
 	return render_template('index.html')
 
 @app.route('/track/<hashtag>')
-def track(hastag):
+def track(hashtag):
 	# hello.delay()
 	return render_template('index.html', hashtag=hashtag)
 
