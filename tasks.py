@@ -5,7 +5,7 @@ from tweepy.streaming import StreamListener
 from pymongo import MongoClient
 import json, os
 
-config_from_object('config')
+self.config_from_object('config')
 
 
 app = Celery('tasks', broker=BROKER_URL)
