@@ -4,11 +4,6 @@ import os
 app = Flask(__name__)
 app.config.from_object('config')
 
-print('HERE IM HERE IM HERE IM HERE')
-print(app.config['BROKER_URL'])
-print(app.config['CLIENT_KEY'])
-
-
 from tasks import hello
 
 @app.route('/')

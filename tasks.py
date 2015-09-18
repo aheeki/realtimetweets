@@ -5,13 +5,10 @@ from tweepy.streaming import StreamListener
 from pymongo import MongoClient
 import json, os
 
-BROKER_URL = os.environ.get('CLOUDAMQP_URL')
+celeryapp = Celery('tasks', broker=app.config['BROKER_URL'])
 
-
-app = Celery('tasks', broker=BROKER_URL)
-
-auth = OAuthHandler(CLIENT_KEY, CLIENT_SECRET)
-auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
+auth = OAuthHandler(app.config['CLIENT_KEY'], app.config['CLIENT_SECRET'])
+auth.set_access_token(app.config['ACCESS_TOKEN'], app.config['ACCESS_SECRET'])
 
 
 class listener(StreamListener):
@@ -32,7 +29,7 @@ class listener(StreamListener):
 		print status
 
 
-@app.task
+@celeryapp.task
 def hello():
 	# print('hello')
 	twitterStream = Stream(auth, listener())
