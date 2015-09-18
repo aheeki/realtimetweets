@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 import os
 
 app = Flask(__name__)
@@ -10,13 +10,14 @@ from tasks import hello
 def index():
 	return render_template('index.html')
 
-@app.route('/track/<string:hashtag>')
-def track(hashtag):
+@app.route('/track', methods=['GET'])
+def track():
+	hashtag = request.args.get('hashtag','')
 	# add the hashtag
 	if (hashtag[:1] != '#'):
 		hashtag = '#' + hashtag
 	# hello.revoke()
-	result = hello.delay(hashtag)
+	# result = hello.delay(hashtag)
 	return render_template('index.html', hashtag=hashtag)
 
 if __name__ == '__main__':
