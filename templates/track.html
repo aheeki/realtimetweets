@@ -7,23 +7,18 @@
 	<body>
 		<div class="container">
 			<div class="row">
-				<h1>choose a hashtag to follow:</h1>
+				<h1>following {{ hashtag }}</h1>
 				<br>
 				<div class="col-sm-1">
 					<h1>#</h1>
 				</div>
-				<form action='/track' method='get'>
-				<div class="col-sm-5">
-					<h3><input type="text" name="hashtag" placeholder="hashtag"></h3>
+				<div class="col-sm-2">
+					<h3>count:</h3>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-1">
 				</div>
-				<div class="col-sm-2">
-					<h4><input class="btn-primary" type="submit" value="submit"></h4>
-				</div>
-				</form>
 			</div>
 		</div>
 	</body>

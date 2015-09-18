@@ -18,7 +18,7 @@ def track():
 		hashtag = '#' + hashtag
 	# hello.revoke()
 	# result = hello.delay(hashtag)
-	return render_template('index.html', hashtag=hashtag)
+	return render_template('track.html', hashtag=hashtag)
 
 if __name__ == '__main__':
 	app.run(debug=True)
