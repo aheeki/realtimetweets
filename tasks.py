@@ -8,14 +8,8 @@ import config
 
 app = Celery('tasks', broker=BROKER_URL)
 
-
-ckey="iFxuEMWv8110vLIWWqA54w"
-csecret="rC0cr1w0heC6swvuDTDIiE98ipNvH6WiEI62YzeC0k"
-atoken="991518511-9QlULoonEjUs5G3M7Mhc1m3iAQPISRqYtitXrmHh"
-asecret="72ggRW5sY7CCAHRaCjSBx6tGcm7fbPrZ9CB7EPc94"
-
-auth = OAuthHandler(ckey, csecret)
-auth.set_access_token(atoken, asecret)
+auth = OAuthHandler(CLIENT_KEY, CLIENT_SECRET)
+auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
 
 
 class listener(StreamListener):
