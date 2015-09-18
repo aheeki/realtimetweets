@@ -10,6 +10,10 @@ from tasks import hello
 def index():
 	return render_template('index.html')
 
+@app.route('/stop')
+def stop():
+	hello.revoke()
+
 @app.route('/track/<string:hashtag>')
 def track(hashtag):
 	# add the hashtag
