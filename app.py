@@ -8,12 +8,12 @@ from tasks import hello
 
 @app.route('/')
 def index():
-	hello.delay()
 	return render_template('index.html')
+
+@app.route('/track/<hashtag>')
+def track(hastag):
+	# hello.delay()
+	return render_template('index.html', hashtag=hashtag)
 
 if __name__ == '__main__':
 	app.run(debug=True)
-
-
-
-

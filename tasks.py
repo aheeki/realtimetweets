@@ -32,7 +32,7 @@ class listener(StreamListener):
 		tweet = json.loads(data)
 
 		collection.insert(tweet)
-
+		
 		return True
 
 	def on_error(self, status):
@@ -43,4 +43,4 @@ class listener(StreamListener):
 def hello():
 	# print('hello')
 	twitterStream = Stream(auth, listener())
-	twitterStream.filter(track=["#trump"])
+	twitterStream.filter(track=['#trump'])
