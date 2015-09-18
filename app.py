@@ -12,7 +12,9 @@ def index():
 
 @app.route('/track/<hashtag>')
 def track(hashtag):
-	# hello.delay()
+	if (hashtag[:1] != '#'):
+		hashtag = '#' + hashtag
+	# hello.delay(hashtag)
 	return render_template('index.html', hashtag=hashtag)
 
 if __name__ == '__main__':

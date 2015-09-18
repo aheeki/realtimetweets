@@ -32,7 +32,7 @@ class listener(StreamListener):
 		tweet = json.loads(data)
 
 		collection.insert(tweet)
-		
+
 		return True
 
 	def on_error(self, status):
@@ -40,7 +40,7 @@ class listener(StreamListener):
 
 
 @celeryapp.task
-def hello():
+def hello(hashtag):
 	# print('hello')
 	twitterStream = Stream(auth, listener())
-	twitterStream.filter(track=['#trump'])
+	twitterStream.filter(track=['hashtag'])
