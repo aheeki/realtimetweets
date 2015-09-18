@@ -2,7 +2,7 @@ from flask import Flask, render_template, jsonify
 import os
 
 app = Flask(__name__)
-app.config.from_object('config')
+# app.config.from_object('config')
 
 from tasks import hello
 
