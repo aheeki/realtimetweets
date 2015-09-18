@@ -3,6 +3,8 @@ import os
 
 app = Flask(__name__)
 app.config.from_object('config')
+
+print('HERE IM HERE IM HERE IM HERE')
 print(app.config['BROKER_URL'])
 
 from tasks import hello

@@ -5,6 +5,9 @@ from tweepy.streaming import StreamListener
 from pymongo import MongoClient
 import json, os
 
+BROKER_URL = os.environ.get('CLOUDAMQP_URL')
+
+
 app = Celery('tasks', broker=BROKER_URL)
 
 auth = OAuthHandler(CLIENT_KEY, CLIENT_SECRET)
