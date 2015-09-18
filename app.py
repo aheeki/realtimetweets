@@ -10,8 +10,9 @@ from tasks import hello
 def index():
 	return render_template('index.html')
 
-@app.route('/track/<hashtag>')
+@app.route('/track/<string:hashtag>')
 def track(hashtag):
+	# add the hashtag
 	if (hashtag[:1] != '#'):
 		hashtag = '#' + hashtag
 	# hello.delay(hashtag)
