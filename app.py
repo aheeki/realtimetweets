@@ -17,7 +17,7 @@ def track():
 	if (hashtag[:1] != '#'):
 		hashtag = '#' + hashtag
 	# hello.revoke()
-	hello.delay(hashtag)
+	result = hello.delay(hashtag)
 	# printme = result.get()
 	print('HEREHEREHEREHERE')
 	# print(printme)
