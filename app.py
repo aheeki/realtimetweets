@@ -1,4 +1,5 @@
 from flask import Flask, render_template, jsonify, request
+from celery.task.control import revoke
 import os
 
 app = Flask(__name__)
@@ -22,19 +23,21 @@ def track():
 	try:
 		print('result', result)
 	except:
-		pass
+		print('result didnt work')
+
 	try:
 		print('asyncresult',AsyncResult(result))
 	except:
-		pass
+		print('asyncresult didnt work')
 	try:
 		print('asyncresultstate',AsyncResult(result).state)
 	except:
-		pass
+		print('asyncresultstate didnt work')
 	try:
-		print('revoking',hello.revoke())
+		print('revoking',revoke(result,terminate=True))
 	except:
-		pass
+		print('revoking didnt work')
+	revoke(result,terminate=True)
 
 	return render_template('track.html', hashtag=hashtag)
 
