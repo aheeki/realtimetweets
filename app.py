@@ -16,12 +16,13 @@ def track():
 	# add the hashtag
 	if (hashtag[:1] != '#'):
 		hashtag = '#' + hashtag
-	# hello.revoke()
 	result = hello.delay(hashtag)
-	# printme = result.get()
 	print('HEREHEREHEREHERE')
 	# print(printme)
-	print('result', result)
+	try:
+		print('result', result)
+	except:
+		pass
 	try:
 		print('asyncresult',AsyncResult(result))
 	except:
@@ -30,6 +31,11 @@ def track():
 		print('asyncresultstate',AsyncResult(result).state)
 	except:
 		pass
+	try:
+		print('revoking',hello.revoke())
+	except:
+		pass
+
 	return render_template('track.html', hashtag=hashtag)
 
 
