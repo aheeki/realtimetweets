@@ -19,7 +19,7 @@ def track():
 	# hello.revoke()
 	# result = hello.delay(hashtag)
 	# printme = result.get()
-	# print('HEREHEREHEREHERE')
+	print('HEREHEREHEREHERE')
 	# print(printme)
 	# print(result)
 	return render_template('track.html', hashtag=hashtag)
