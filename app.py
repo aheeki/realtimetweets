@@ -18,8 +18,8 @@ def track():
 		hashtag = '#' + hashtag
 	# hello.revoke()
 	result = hello.delay(hashtag)
-	print result.get()
-	return render_template('track.html', hashtag=hashtag)
+	printme = result.get()
+	return render_template('track.html', hashtag=hashtag, printme=printme)
 
 if __name__ == '__main__':
 	app.run(debug=True)
