@@ -21,9 +21,15 @@ def track():
 	# printme = result.get()
 	print('HEREHEREHEREHERE')
 	# print(printme)
-	print('result',result)
-	print('asyncresult',AsyncResult(result))
-	print('asyncresultstate',AsyncResult(result).state)
+	print('result', result)
+	try:
+		print('asyncresult',AsyncResult(result))
+	except:
+		pass
+	try:
+		print('asyncresultstate',AsyncResult(result).state)
+	except:
+		pass
 	return render_template('track.html', hashtag=hashtag)
 
 
