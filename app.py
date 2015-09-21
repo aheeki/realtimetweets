@@ -17,12 +17,12 @@ def track():
 	if (hashtag[:1] != '#'):
 		hashtag = '#' + hashtag
 	# hello.revoke()
-	result = hello.delay(hashtag)
-	printme = result.get()
-	print('HEREHEREHEREHERE')
-	print(printme)
-	print(result)
-	return render_template('track.html', hashtag=hashtag, printme=printme)
+	# result = hello.delay(hashtag)
+	# printme = result.get()
+	# print('HEREHEREHEREHERE')
+	# print(printme)
+	# print(result)
+	return render_template('track.html', hashtag=hashtag)
 
 if __name__ == '__main__':
 	app.run(debug=True)
