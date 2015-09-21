@@ -21,7 +21,7 @@ def track():
 	# printme = result.get()
 	print('HEREHEREHEREHERE')
 	# print(printme)
-	# print(result)
+	print(result)
 	return render_template('track.html', hashtag=hashtag)
 
 if __name__ == '__main__':
