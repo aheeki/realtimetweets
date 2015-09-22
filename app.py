@@ -21,6 +21,7 @@ def track():
 		hashtag = '#' + hashtag
 	result = hello.delay(hashtag)
 	print('result task id', result.task_id)
+	print('type of id',type(result.task_id))
 	session['task_id'] = result.task_id
 	print('session task id in track',session['task_id'])
 	return 'track'
