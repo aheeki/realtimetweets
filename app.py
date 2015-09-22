@@ -19,7 +19,9 @@ def track():
 	if (hashtag[:1] != '#'):
 		hashtag = '#' + hashtag
 	result = hello.delay(hashtag)
-	time.sleep(14)
+	for x in range(0,15):
+		print(sleep,x)
+		time.sleep(1)
 	revoke(12345,terminate=True)
 	print('HEREHEREHEREHERE')	
 	return render_template('trackme.html', hashtag=hashtag)
