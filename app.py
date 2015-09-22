@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify, request
 import os
+import celery
 from celery.task.control import revoke
 
 app = Flask(__name__)
@@ -18,6 +19,18 @@ def track():
 	if (hashtag[:1] != '#'):
 		hashtag = '#' + hashtag
 	result = hello.delay(hashtag)
+	try:
+		print result.task_id
+	except:
+		print('no result task id')
+	try:
+		print result.status
+	except:
+		print('no result status')
+	try:
+		print result.result
+	except:
+		print('no result.result')
 	return 'track'
 
 @app.route('/kill')
