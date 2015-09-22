@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify, request
 import os
 from celery.task.control import revoke
+import time
 
 app = Flask(__name__)
 # app.config.from_object('config')
@@ -18,6 +19,7 @@ def track():
 	if (hashtag[:1] != '#'):
 		hashtag = '#' + hashtag
 	result = hello.delay(hashtag)
+	time.sleep(12)
 	print('HEREHEREHEREHERE')
 	# print(printme)
 	try:
