@@ -19,13 +19,13 @@ def track():
 		hashtag = '#' + hashtag
 	result = hello.delay(hashtag)
 	print('HEREHEREHEREHERE')	
-	return render_template('track.html', hashtag=hashtag)
+	return render_template('trackme.html', hashtag=hashtag)
 
 @app.route('/kill')
 def kill():
 	print('imhere')
 	revoke(12345,terminate=True)
-	return render_template('track.html')
+	return render_template('trackme.html')
 
 if __name__ == '__main__':
 	app.run(debug=True)
