@@ -23,6 +23,7 @@ def track():
 
 @app.route('/kill')
 def kill():
+	print('imhere')
 	revoke(12345,terminate=True)
 	return render_template('track.html')
 
