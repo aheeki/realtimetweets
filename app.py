@@ -20,13 +20,15 @@ def track():
 	if (hashtag[:1] != '#'):
 		hashtag = '#' + hashtag
 	result = hello.delay(hashtag)
+	print('result task id', result.task_id)
 	session['task_id'] = result.task_id
+	print('session task id in track',session['task_id'])
 	return 'track'
 
 @app.route('/kill')
 def kill():
 	print('imhere')
-	print('task',session['task_id'])
+	print('session task id in kill',session['task_id'])
 	try:
 		revoke(session['task_id'],terminate=True)
 		print('revoked')
