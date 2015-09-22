@@ -20,7 +20,7 @@ def track():
 		hashtag = '#' + hashtag
 	result = hello.delay(hashtag)
 	for x in range(0,15):
-		print(sleep,x)
+		print(x)
 		time.sleep(1)
 	revoke(12345,terminate=True)
 	print('HEREHEREHEREHERE')	
