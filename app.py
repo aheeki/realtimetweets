@@ -8,7 +8,6 @@ app = Flask(__name__)
 # app.config.from_object('config')
 
 from tasks import hello
-TASK = ''
 
 @app.route('/')
 def index():
@@ -20,15 +19,16 @@ def track():
 	# add the hashtag
 	if (hashtag[:1] != '#'):
 		hashtag = '#' + hashtag
-	TASK = hello.delay(hashtag)
+	result = hello.delay(hashtag)
+	session['task_id'] = result.task_id
 	return 'track'
 
 @app.route('/kill')
 def kill():
 	print('imhere')
-	print('TASK',TASK)
+	print('task',session['task_id'])
 	try:
-		revoke(TASK.task_id,terminate=True)
+		revoke(session['task_id'],terminate=True)
 		print('revoked')
 	except:
 		print('didnt revoke')
