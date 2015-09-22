@@ -23,7 +23,11 @@ def track():
 @app.route('/kill')
 def kill():
 	print('imhere')
-	revoke(12345,terminate=True)
+	try:
+		revoke(12345,terminate=True)
+		print('revoked')
+	except:
+		print('didnt revoke')
 	return 'kill'
 
 if __name__ == '__main__':
