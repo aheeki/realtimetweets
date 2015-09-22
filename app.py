@@ -26,6 +26,7 @@ def track():
 @app.route('/kill')
 def kill():
 	print('imhere')
+	print('TASK',TASK)
 	try:
 		revoke(TASK.task_id,terminate=True)
 		print('revoked')
