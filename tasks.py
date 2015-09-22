@@ -40,7 +40,7 @@ class listener(StreamListener):
 
 
 @celeryapp.task
-def hello(hashtag, task_id=12345):
+def hello(hashtag):
 	# print('hello')
 	twitterStream = Stream(auth, listener())
 	twitterStream.filter(track=[hashtag])

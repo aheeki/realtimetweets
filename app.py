@@ -2,6 +2,7 @@ from flask import Flask, render_template, jsonify, request
 import os
 import celery
 from celery.task.control import revoke
+import time
 
 app = Flask(__name__)
 # app.config.from_object('config')
@@ -31,16 +32,22 @@ def track():
 		print result.result
 	except:
 		print('no result.result')
+	time.sleep(20)
+	try:
+		revoke(result.task_id,terminate=True)
+		print('revoked')
+	except:
+		print('didnt revoke')
 	return 'track'
 
 @app.route('/kill')
 def kill():
 	print('imhere')
-	try:
-		revoke(12345,terminate=True)
-		print('revoked')
-	except:
-		print('didnt revoke')
+	# try:
+	# 	revoke(12345,terminate=True)
+	# 	print('revoked')
+	# except:
+	# 	print('didnt revoke')
 	return 'kill'
 
 if __name__ == '__main__':
