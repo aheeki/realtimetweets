@@ -8,6 +8,7 @@ app = Flask(__name__)
 # app.config.from_object('config')
 
 from tasks import hello
+session['task_id'] = ''
 
 @app.route('/')
 def index():
