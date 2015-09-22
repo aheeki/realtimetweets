@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify, request
 import os
+from celery.task.control import revoke
 
 app = Flask(__name__)
 # app.config.from_object('config')
@@ -37,7 +38,7 @@ def track():
 		print('asyncresultstate didnt work')
 
 	try:
-		revoke(result,terminate=True)
+		revoke(12345,terminate=True)
 		print('revoking')
 	except:
 		print('revoking didnt work')
