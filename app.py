@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request, session
+from flask import Flask, render_template, jsonify, request
 import os
 import celery
 from celery.task.control import revoke
@@ -22,20 +22,21 @@ def track():
 	result = hello.delay(hashtag)
 	print('result task id', result.task_id)
 	print('type of id',type(result.task_id))
-	session['taskid'] = result.task_id
-	print('session task id in track',session['taskid'])
-	return 'track'
+	taskid = result.task_id
+	print('task id in track',taskid)
+	return result.task_id
 
-@app.route('/kill')
+@app.route('/kill', methods=['GET'])
 def kill():
+	taskid = request.args.get('taskid','')
 	print('imhere')
-	print('session task id in kill',session['taskid'])
+	print('task id in kill',taskid)
 	try:
-		revoke(session['taskid'],terminate=True)
+		revoke(taskid,terminate=True)
 		print('revoked')
 	except:
 		print('didnt revoke')
-	return 'kill'
+	return 'killed ' + taskid
 
 if __name__ == '__main__':
 	app.run(debug=True)
