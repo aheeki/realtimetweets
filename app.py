@@ -12,8 +12,8 @@ from tasks import hello
 def index():
 	return render_template('index.html')
 
-@app.route('/isrunning')
-def isrunning():
+# @app.route('/isrunning')
+# def isrunning():
 	
 
 @app.route('/track', methods=['GET'])
