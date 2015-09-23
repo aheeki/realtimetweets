@@ -45,6 +45,10 @@ def track():
 		print('result.tasks', result.tasks)
 	except:
 		print('result.tasks doesnt work')
+	try:
+		print('inspect', inspect(result.id))
+	except:
+		print('inspect didnt work')
 
 	return 'running task ' + result.id
 
