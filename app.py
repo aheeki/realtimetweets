@@ -16,7 +16,7 @@ def index():
 @app.route('/track', methods=['GET'])
 def track():
 	hashtag = request.args.get('hashtag','')
-	# add the hashtag
+	# add the hashtag syntax
 	if (hashtag[:1] != '#'):
 		hashtag = '#' + hashtag
 	result = hello.delay(hashtag)
