@@ -46,7 +46,7 @@ def track():
 	except:
 		print('result.tasks doesnt work')
 	try:
-		print('inspect', inspect(result.id))
+		print('inspect', inspect())
 	except:
 		print('inspect didnt work')
 
