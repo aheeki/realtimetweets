@@ -46,9 +46,9 @@ def track():
 	except:
 		print('result.tasks doesnt work')
 	try:
-		print('inspect', inspect())
+		print('backend', hello.backend)
 	except:
-		print('inspect didnt work')
+		print('backend didnt work')
 
 	return 'running task ' + result.id
 
