@@ -42,11 +42,11 @@ def track():
 		hashtag = '#' + hashtag
 	result = hello.delay(hashtag)
 	try:
-		print('result.tasks', result.tasks)
+		print('async')
 	except:
 		print('result.tasks doesnt work')
 	try:
-		print('backend', hello.backend)
+		print('request', hello.request)
 	except:
 		print('backend didnt work')
 
