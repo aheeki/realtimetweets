@@ -15,14 +15,22 @@ def index():
 @app.route('/isrunning')
 def isrunning():
 	try:
+		res = hello.AsyncResult('this-id-does-not-exist')
 		print('res = app.AsyncResult in isrunning')
-		res = app.AsyncResult('this-id-does-not-exist')
 	except:
 		print('result.id doesnt work')
 	try:
 		print('res.state in isrunning', res.state)
 	except:
-		print('result.id doesnt work')			
+		print('result.state doesnt work')
+	try:
+		print('res.id in isrunning', res.id)
+	except:
+		print('result.id doesnt work')
+	try:
+		print('res.tasks in isrunning', res.tasks)
+	except:
+		print('result.tasks doesnt work')	
 
 	return True
 
@@ -34,15 +42,11 @@ def track():
 		hashtag = '#' + hashtag
 	result = hello.delay(hashtag)
 	try:
-		print('result.id', result.id)
+		print('result.tasks', result.tasks)
 	except:
-		print('result.id doesnt work')
-	try:
-		print('result.state', result.state)
-	except:
-		print('result.state doesnt work')
+		print('result.tasks doesnt work')
 
-	return 'running task ' + result.task_id
+	return 'running task ' + result.id
 
 @app.route('/kill', methods=['GET'])
 def kill():
