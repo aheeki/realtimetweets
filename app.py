@@ -20,23 +20,12 @@ def track():
 	if (hashtag[:1] != '#'):
 		hashtag = '#' + hashtag
 	result = hello.delay(hashtag)
-	print('result task id', result.task_id)
-	print('type of id',type(result.task_id))
-	taskid = result.task_id
-	print('task id in track',taskid)
 	return result.task_id
 
 @app.route('/kill', methods=['GET'])
 def kill():
 	taskid = request.args.get('taskid','')
-	print('imhere')
-	print('task id in kill',taskid)
-	try:
-		revoke(taskid,terminate=True)
-		print('revoked')
-	except:
-		print('didnt revoke')
-	return 'killed ' + taskid
+	return revoke(taskid,terminate=True)
 
 if __name__ == '__main__':
 	app.run(debug=True)
