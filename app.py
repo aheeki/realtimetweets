@@ -2,7 +2,6 @@ from flask import Flask, render_template, jsonify, request
 import os
 import celery
 from celery.task.control import revoke
-from proj.celery import app
 
 app = Flask(__name__)
 # app.config.from_object('config')
