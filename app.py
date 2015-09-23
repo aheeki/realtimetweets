@@ -12,13 +12,16 @@ from tasks import hello
 def index():
 	return render_template('index.html')
 
+@app.route('/isrunning')
+def isrunning():
+	
+
 @app.route('/track', methods=['GET'])
 def track():
 	hashtag = request.args.get('hashtag','')
 	# add the hashtag syntax
 	if (hashtag[:1] != '#'):
 		hashtag = '#' + hashtag
-	hashtag = 
 	result = hello.delay(hashtag)
 	return 'running task ' + result.task_id
 
