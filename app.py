@@ -9,6 +9,7 @@ app = Flask(__name__)
 from tasks import hello
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
+app.config['ISRUNNING'] = False
 
 
 @app.route('/')
@@ -35,7 +36,7 @@ def isrunning():
 	except:
 		print('result.tasks doesnt work')	
 
-	return SECRET_KEY
+	return app.config['ISRUNNING']
 
 @app.route('/track', methods=['GET'])
 def track():
@@ -45,6 +46,7 @@ def track():
 		hashtag = '#' + hashtag
 	try:
 		result = hello.delay(hashtag)
+		app.config['ISRUNNING'] = True
 	except:
 		print('could not start hello.delay()')
 
@@ -63,6 +65,7 @@ def track():
 def kill():
 	taskid = request.args.get('taskid','')
 	revoke(taskid,terminate=True)
+	app.config['ISRUNNING'] = False
 	return 'killed task ' + taskid
 
 if __name__ == '__main__':
