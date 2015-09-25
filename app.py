@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, session
 import os
 import celery
 from celery.task.control import revoke
@@ -7,6 +7,8 @@ app = Flask(__name__)
 # app.config.from_object('config')
 
 from tasks import hello
+
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 @app.route('/')
 def index():
@@ -32,7 +34,7 @@ def isrunning():
 	except:
 		print('result.tasks doesnt work')	
 
-	return True
+	return session['isrunning']
 
 @app.route('/track', methods=['GET'])
 def track():
@@ -40,7 +42,12 @@ def track():
 	# add the hashtag syntax
 	if (hashtag[:1] != '#'):
 		hashtag = '#' + hashtag
-	result = hello.delay(hashtag)
+	try:
+		result = hello.delay(hashtag)
+		session['isrunning'] = True
+	except:
+		print('could not start hello.delay()')
+
 	try:
 		print('async')
 	except:
@@ -56,7 +63,9 @@ def track():
 def kill():
 	taskid = request.args.get('taskid','')
 	revoke(taskid,terminate=True)
+	session['isrunning'] = False
 	return 'killed task ' + taskid
 
 if __name__ == '__main__':
 	app.run(debug=True)
+	session['isrunning'] = False
